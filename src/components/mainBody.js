@@ -21,7 +21,7 @@ function Input (props) {
         setChances(chances => chances - 1);
         //guards
         console.log(submission);
-        if(tries.length == 2) {
+        if(tries.length === 2) {
             alert("Run out of tries");
         }
         if(submission != answer) {
@@ -29,7 +29,7 @@ function Input (props) {
             alert("Wrong! Try again");
         }
 
-        else if(submission == answer) {
+        else if(submission === answer) {
             alert("Right answer");
         }
         e.preventDefault();
