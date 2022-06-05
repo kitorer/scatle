@@ -2,70 +2,119 @@ import React from "react";
 import { Component, useState } from "react";
 
 // These are arrays bc 0 = ez & 1 = hard
-let hint = [], answer = [], todaysPoop;
-
-var tries = [] , recentTry;
+let hint = [], answer = [], todaysPoop, winIndex = -1;
+var tries = [];
+const endMessage = new Map();
+endMessage.set(0, "Booo! come back tomorrow");
+endMessage.set(1, "Winner winner poop dinner!")
 
     hint = "poop";
     answer = "poop";
-
     todaysPoop = "http://dept.harpercollege.edu/biology/guide/gallery/evidence/scat/original/Bird_Berry_Scat.jpg";
 
 function Input (props) {
     const [submission, setSub] = useState('');
-    const [chances, setChances] = useState(2);
-    const [win, setWin] = useState(false);
+    const [chancesLeft, setChances] = useState(3);
+    const [win, setWin] = useState(-1);
     
     const handleSubmit = (e) => {
 
         //guards
-        console.log(submission);
-        if(tries.length === 2 && submission !== answer) {
+        //console.log(submission);
+        if(chancesLeft === 0 && submission !== answer) {
             alert("Run out of tries");
-            setWin(false);
-            setChances(chances => chances - 1);
+            setWin(0);
+            setChances(chancesLeft => chancesLeft - 1);
+
         }
         else if(submission !== answer) {
             tries.push(submission);
             alert("Wrong! Try again");
-            setChances(chances => chances - 1);
+            setChances(chancesLeft => chancesLeft - 1);
         }
 
         else if(submission === answer) {
             alert("Right answer");
-            setWin(true);
+            setWin(1);
+            winIndex = tries.length;
+            console.log(tries.length + "winner winner chicken dinner")
         }
-        console.log(win);
+        //console.log(win);
+        
         e.preventDefault();
     }
-
-    return( 
-    <label className="relative block">
-        
-        <img src= {todaysPoop} className ='flex rounded-lg mb-10'alt="poop" ></img> {/* replace this with a something that changes the picture everyday*/}
-        <form onSubmit={handleSubmit}>
-
-        <p>Which animal did this?</p>
-            <input 
-                className="placeholder:italic	text-black placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 shadow-sm focus:outline-none focus:border-sky-500" 
-                placeholder="Type your guess" type="text" name="guess"
-                value= {submission}
+    if(chancesLeft >= 0 && win === -1)
+    {
+        return( 
+    
+            <label className="relative block">
                 
-                onChange={(e) =>{
-                    setSub(e.target.value)
-                    
-                    } 
-                }
-            />
-        </form>
+                <img src= {todaysPoop} className ='flex rounded-lg mb-10'alt="poop" ></img> {/* replace this with a something that changes the picture everyday*/}
+                <form onSubmit={handleSubmit}>
+        
+                <p>Which animal did this?</p>
+                    <input 
+                        className="placeholder:italic	text-black placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 shadow-sm focus:outline-none focus:border-sky-500" 
+                        placeholder="Type your guess" type="text" name="guess"
+                        value= {submission}
+                        
+                        onChange={(e) =>{
+                            setSub(e.target.value)
+                            
+                            } 
+                        }
+                    />
+                </form>
+        
+                {/*hint will show up when hardmode is on*/}
+                <p>{chancesLeft + 1} tries left</p>
+        
+            </label>
+            );
+    }
+    else {
+        return <End winStatus = {win}/>
+    }
+}
 
-        {/*hint will show up when hardmode is on*/}
-        <p>{chances + 1} tries left</p>
-
-    </label>
+function End (props) {
+    return(
+        <div className="flex flex-col items-center gap-4 mt-2">
+            <img src= {todaysPoop} className ='flex rounded-lg mb-10'alt="poop" ></img> {/* replace this with a something that changes the picture everyday*/}
+            {endMessage.get(props.winStatus)}
+            <div className="flex gap-2">
+                <ShowResult />
+            </div>
+        </div>
     );
 }
 
+function ShowResult () {
+    let redLength = tries.length;
+    const fields = [];
+
+    if (winIndex >= 0) {
+        redLength--;
+        console.log(redLength)
+    }
+
+    // 4 is the total number of chances, but you wont always use them
+    for(let i = 0; i < 4; i++) {
+        
+        if (i <= redLength)
+            fields.push(<div className="w-4 h-4 bg-red-700 rounded-sm inline-block"></div>);
+        else if (winIndex === i)
+            fields.push(<div className="w-4 h-4 rounded-sm bg-emerald-600 inline-block"></div>);
+        else 
+        fields.push(<div className="w-4 h-4 rounded-sm bg-slate-500 inline-block"></div>);
+    }
+    return(
+        <div className="inline-block float : left flex space-x-1">
+            {fields}
+        </div>
+    );
+}
+ 
 function Hint (props) {
 
     return(
@@ -84,11 +133,3 @@ export{
     Input
 } 
 
-/*
-export {
-    Input,
-    TitleContainer,
-    Info,
-  }
-  
-*/
