@@ -8,14 +8,12 @@ import  {InfoModal, HelpModal}  from './Modals.js';
 class TitleContainer extends Component {
     render() {
       return (
-        <div className="">
-          <div className="inline-flex font-normal max-w-screen-md mx-auto justify-between">
-            <div className = "flex justify-evenly text-custom-fgcolor px-1 py-2 ">
-              < IconContainer/>
-            </div>
-            <div className = "flex flex-row grow text-left items-center ">
-              <h1 className="">Turdle</h1>
-            </div>
+        <div className="inline-flex font-normal max-w-screen-md mx-auto ">
+          <div className = "flex text-custom-fgcolor px-1 py-2 justify-self-start">
+            < IconContainer/>
+          </div>
+          <div className = "flex flex-row grow text-left items-center justify-self-end">
+            <h1 className="">Turdle</h1>
           </div>
         </div>
       );
@@ -25,7 +23,7 @@ class TitleContainer extends Component {
 class IconContainer extends Component{
   render() {
     return(
-      <div className="flex flex-1">
+      <div className="flex flex-1 justify-between">
 
         < Help/>
 
@@ -41,7 +39,7 @@ function Help() {
   const [HelpOn, setHelpOn] = useState(false);
 
   return (
-    <div>
+    <div className="justify-items-start">
 
       <button className=" to-white" onClick={ ()=> { setHelpOn(true)}}>
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

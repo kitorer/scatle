@@ -1,3 +1,16 @@
+# Scatle/Poople/Turdle
+
+made with TailwindsCSS, React, Axios, 
+
+# Demo
+
+![screen-gif](./demo.gif)
+
+Scattle #1
+
+💩,🟥,🟥,🟩,⬛️
+scatle.com
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

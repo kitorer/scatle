@@ -11,12 +11,13 @@ function App() {
     
     <div className="App">
       <header className="App-header">
-        <TitleContainer />
         {/*this body is supposed to change for date*/}
         {/*if the state changes to game over then display that screen*/}
         <body>
-
-          <Input />
+          <div className='justify-between'>
+            <TitleContainer />
+            <Input />
+          </div>
           
         </body>
       </header>
