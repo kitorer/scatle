@@ -3,7 +3,7 @@ import React from "react";
 import "./components.css";
 import { Component } from "react";
 import { useState } from "react";
-import  {InfoModal, HelpModal}  from './Modals.js';
+import  {InfoModal, HelpModal, StatsModal, SettingsModal,}  from './Modals.js';
 
 class TitleContainer extends Component {
     render() {
@@ -13,7 +13,7 @@ class TitleContainer extends Component {
             < IconContainer/>
           </div>
           <div className = "flex flex-row grow text-left items-center justify-self-end">
-            <h1 className="">Turdle</h1>
+            <h1 className="">💩Turdle💩</h1>
           </div>
         </div>
       );
@@ -29,6 +29,9 @@ class IconContainer extends Component{
 
         < Info/>
         
+        <Stats />
+
+        <Settings />
     </div>
     )
   }
@@ -60,7 +63,7 @@ function Info() {
     return(
       <div>
         <button className=" to-white" onClick={ ()=> {setInfoOn(true)}}>
-      
+  
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="16" x2="12" y2="12"></line>
@@ -80,34 +83,11 @@ function Settings() {
     <div>
       <div>
         <button className=" to-white" onClick={ ()=> {setSettingsOn(true)}}>
-      
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
         </button>
-        {SettingsOn && <InfoModal setSettingsOff= {setSettingsOn} />}
-
-      </div>      
-    </div>
-  )
-}
-function Share() {
-  const [ShareOn, setShareOn] = useState(false);
-
-  return(
-    <div>
-      <div>
-        <button className=" to-white" onClick={ ()=> {setShareOn(true)}}>
-      
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-          </svg>
-        </button>
-        {ShareOn && <InfoModal setShareOff= {setShareOn} />}
+        {SettingsOn && <SettingsModal setSettingsOff= {setSettingsOn} />}
 
       </div>      
     </div>
@@ -122,13 +102,13 @@ function Stats() {
       <div>
         <button className=" to-white" onClick={ ()=> {setStatsOn(true)}}>
       
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="20" x2="12" y2="10"></line>
+          <line x1="18" y1="20" x2="18" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="16"></line>
+        </svg>
         </button>
-        {StatsOn && <InfoModal setStatsOff= {setStatsOn} />}
+        {StatsOn && <StatsModal setStatsOff= {setStatsOn} />}
 
       </div>      
     </div>

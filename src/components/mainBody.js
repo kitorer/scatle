@@ -14,6 +14,18 @@ endMessage.set(1, "Winner winner poop dinner!")
     answer = "poop";
     todaysPoop = "http://dept.harpercollege.edu/biology/guide/gallery/evidence/scat/original/Bird_Berry_Scat.jpg";
 
+const timeElapsed = Date.now();
+const today = new Date(timeElapsed);
+console.log(today.getHours())
+
+// going to need an actual way to tell if its been the next day
+if (today.getHours() === 0 || localStorage.getItem('win') == null)
+{
+    localStorage.setItem('win', '-1');
+    localStorage.setItem('winIndex', '-1');
+    localStorage.setItem('tries', '0');
+}
+    
 function Input (props) {
     const [submission, setSub] = useState('');
     const [chancesLeft, setChances] = useState(3);
@@ -22,30 +34,35 @@ function Input (props) {
     const handleSubmit = (e) => {
 
         const sub = submission.toLowerCase();
-        console.log(sub)
+        console.log(sub + " = submission")
         //guards
         if(chancesLeft === 0 && sub !== answer) {
-            alert("Run out of tries");
+            //alert("Run out of tries");
             setWin(0);
             setChances(chancesLeft => chancesLeft - 1);
-
+            localStorage.setItem('win', '0');
+            localStorage.setItem('tries', tries.length.toString());
         }
         else if(sub !== answer) {
             tries.push(submission);
-            alert("Wrong! Try again");
+            //alert("Wrong! Try again");
             setChances(chancesLeft => chancesLeft - 1);
         }
-
         else if(sub === answer) {
-            alert("Right answer");
+            //alert("Right answer");
             setWin(1);
+            localStorage.setItem('win', '1');
             winIndex = tries.length;
+            localStorage.setItem('winIndex', winIndex.toString());
+            localStorage.setItem('tries', winIndex.toString());
             console.log(tries.length + "winner winner chicken dinner")
         }
         
+        console.log(parseInt(localStorage.getItem('win')))
         e.preventDefault();
     }
-    if(chancesLeft >= 0 && win === -1)
+
+    if(chancesLeft >= 0 && win === -1 && parseInt(localStorage.getItem('win')) === -1)
     {
         return( 
     
@@ -75,7 +92,7 @@ function Input (props) {
             );
     }
     else {
-        return <End winStatus = {win}/>
+        return <End />
     }
 }
 
@@ -86,7 +103,7 @@ function End (props) {
     return(
         <div className="flex flex-col items-center gap-4 mt-2">
             <img src= {todaysPoop} className ='flex rounded-lg mb-10'alt="poop" ></img> {/* replace this with a something that changes the picture everyday*/}
-            {endMessage.get(props.winStatus)}
+            {endMessage.get(parseInt(localStorage.getItem('win')))}
             <div className="flex gap-2">
                 <ShowResult />
             </div>
@@ -117,8 +134,13 @@ function Copy (prop) {
     }
 }
 
+// how to store: save tries.length and winIndex, reset to 0 if its a new day
 function ShowResult () {
-    let redLength = tries.length;
+    
+    winIndex = parseInt(localStorage.getItem('winIndex'));
+    let tryes = parseInt(localStorage.getItem('tries'));
+    
+    let redLength = tryes;
     const fields = [];
 
     if (winIndex >= 0) {
