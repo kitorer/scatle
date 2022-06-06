@@ -9,11 +9,11 @@ class TitleContainer extends Component {
     render() {
       return (
         <div className="">
-          <div className="inline-flex font-normal max-w-screen-md mx-auto ">
+          <div className="inline-flex font-normal max-w-screen-md mx-auto justify-between">
             <div className = "flex justify-evenly text-custom-fgcolor px-1 py-2 ">
               < IconContainer/>
             </div>
-            <div className = "flex flex-row grow text-left items-center">
+            <div className = "flex flex-row grow text-left items-center ">
               <h1 className="">Turdle</h1>
             </div>
           </div>
