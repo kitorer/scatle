@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/scatle/static/css/main.cb13e901.css",
+    "main.js": "/scatle/static/js/main.5c591f93.js",
+    "static/js/787.f7ab52c6.chunk.js": "/scatle/static/js/787.f7ab52c6.chunk.js",
+    "index.html": "/scatle/index.html",
+    "main.cb13e901.css.map": "/scatle/static/css/main.cb13e901.css.map",
+    "main.5c591f93.js.map": "/scatle/static/js/main.5c591f93.js.map",
+    "787.f7ab52c6.chunk.js.map": "/scatle/static/js/787.f7ab52c6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb13e901.css",
+    "static/js/main.5c591f93.js"
+  ]
+}
