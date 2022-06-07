@@ -11,16 +11,21 @@ endMessage.set(0, "Booo! come back tomorrow");
 endMessage.set(1, "Winner winner poop dinner!")
 
     hint = "poop";
-    answer = "bird";
-    todaysPoop = "http://dept.harpercollege.edu/biology/guide/gallery/evidence/scat/original/Bird_Berry_Scat.jpg";
+    answer = "bear";
+    todaysPoop = "https://26a26h25wa1w2rein13y815w-wpengine.netdna-ssl.com/wp-content/uploads/2022/02/gsm_bear_poop-768x512.jpg.webp";
 
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
-console.log(today.getDay())
+const theDay = today.getDay();
+
+console.log(theDay)
 
 // going to need an actual way to tell if its been the next day
-if ((today.getHours() === 0 || localStorage.getItem('scatle_win') == null) && (localStorage.getItem('scatle_dayUsed') == null || localStorage.setItem('scatle_dayUsed') != today.getDay()))
-{
+if (localStorage.getItem('scatle_dayUsed') != theDay) {
+    localStorage.clear();
+}
+
+if (( localStorage.getItem('scatle_win') == null && localStorage.getItem('scatle_dayUsed') == null)){
     localStorage.setItem('scatle_win', '-1');
     localStorage.setItem('scatle_winIndex', '-1');
     localStorage.setItem('scatle_tries', '0');
@@ -56,6 +61,8 @@ function Input (props) {
             localStorage.setItem('scatle_winIndex', winIndex.toString());
             localStorage.setItem('scatle_tries', winIndex.toString());
             console.log(tries.length + "winner winner chicken dinner")
+            console.log(typeof(theDay))
+
         }
         
         console.log(parseInt(localStorage.getItem('scatle_win')))
@@ -100,7 +107,7 @@ function Input (props) {
 function End (props) {
     const [isCopy, setCopy] = useState (false)
 
-    localStorage.setItem('scatle_dayUsed' , today.getDay().toString);
+    localStorage.setItem('scatle_dayUsed' , theDay.toString());
     return(
         <div className="flex flex-col items-center gap-4 mt-2">
             <img src= {todaysPoop} className ='flex rounded-lg mb-10'alt="poop" ></img> {/* replace this with a something that changes the picture everyday*/}
@@ -119,7 +126,7 @@ function End (props) {
 
 function Copy (prop) {
     // day counter need to be implemented
-    const shareText = "Scattle #1" + "\n\n" + sharCopy + "\n" + "scatle.com";
+    const shareText = "Scattle #1" + "\n\n" + sharCopy + "\n" + "https://kitorer.github.io/scatle/";
     if(prop.isCopyState) {
         
         navigator.clipboard.writeText(shareText)

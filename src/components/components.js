@@ -8,12 +8,17 @@ import  {InfoModal, HelpModal, StatsModal, SettingsModal,}  from './Modals.js';
 class TitleContainer extends Component {
     render() {
       return (
-        <div className="inline-flex font-normal max-w-screen-md mx-auto ">
-          <div className = "flex text-custom-fgcolor px-1 py-2 justify-self-start">
+        <div className="inline-flex w-full font-normal justify-between">
+          <div className = "flex text-custom-fgcolor px-1 py-2 ">
             < IconContainer/>
           </div>
-          <div className = "flex flex-row grow text-left items-center justify-self-end">
+          <div className = "flex-row grow items-center">
             <h1 className="">💩Turdle💩</h1>
+          </div>
+          <div className="flex">
+          <Stats />
+
+          < Info/>
           </div>
         </div>
       );
@@ -23,14 +28,8 @@ class TitleContainer extends Component {
 class IconContainer extends Component{
   render() {
     return(
-      <div className="flex flex-1 justify-between">
-
+      <div className="flex">
         < Help/>
-
-        < Info/>
-        
-        <Stats />
-
         <Settings />
     </div>
     )
@@ -39,10 +38,10 @@ class IconContainer extends Component{
 
 function Help() {
   // when clicking on the X or the clicking outside of the box
-  const [HelpOn, setHelpOn] = useState(false);
+  const [HelpOn, setHelpOn] = useState(true);
 
   return (
-    <div className="justify-items-start">
+    <div className="justify-items-start bg-defaultTheme">
 
       <button className=" to-white" onClick={ ()=> { setHelpOn(true)}}>
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
