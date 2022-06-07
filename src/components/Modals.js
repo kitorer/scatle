@@ -81,6 +81,11 @@ const HelpModal = ({ setHelpOff }) => {
                                         click here for the poop guide
                                     </button>
                                 </div>
+                                <button onClick={ () => {
+                                        window.open("https://forms.gle/Zjn7qnHmKvTNGGgG6")
+                                        }}>
+                                        Want to contribute pictures? click here
+                                    </button>
                                 </div>
                                 <div className="flex">
     

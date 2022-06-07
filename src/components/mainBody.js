@@ -1,5 +1,6 @@
 import React from "react";
 import { Component, useState } from "react";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 // These are arrays bc 0 = ez & 1 = hard
 let hint, answer, todaysPoop, winIndex = -1;
@@ -105,9 +106,9 @@ function Input (props) {
 
 // this should be in a different page but im too lazy
 function End (props) {
-    const [isCopy, setCopy] = useState (false)
 
     localStorage.setItem('scatle_dayUsed' , theDay.toString());
+
     return(
         <div className="flex flex-col items-center gap-4 mt-2">
             <img src= {todaysPoop} className ='flex rounded-lg mb-10'alt="poop" ></img> {/* replace this with a something that changes the picture everyday*/}
@@ -115,31 +116,25 @@ function End (props) {
             <div className="flex gap-2">
                 <ShowResult />
             </div>
-            <div className="">
-                <button onClick = {() => { setCopy(true); {/* was something here*/}}} className= "px-3 py-1 text-xl rounded-sm cursor-pointer bg-orange-900"> share </button>
-                <Copy isCopyState = {isCopy} set = { setCopy }/>
-                
-            </div>
+
+            <Copy />
         </div>
     );
 }
 
 function Copy (prop) {
+    const [isCopy, setCopy] = useState (false);
     // day counter need to be implemented
-    const shareText = "Scattle #1" + "\n\n" + sharCopy + "\n" + "https://kitorer.github.io/scatle/";
-    if(prop.isCopyState) {
-        
-        navigator.clipboard.writeText(shareText)
-        .catch( 
+    const shareText = "Scattle #1" + "\n\n" + sharCopy + "\n" + "https://kitorer.github.io/scatle/";    
 
-        );
-            return (
-                <div className="">
-                    Copied to clipboard!
-                </div>
-            );
-        
-    }
+    return(
+        <div>
+            <CopyToClipboard text= {shareText} onCopy={() => setCopy(true)}>
+                <button onClick={setTimeout( ()=> {setCopy(false)}, 1500)} className="px-3 py-1 text-xl rounded-sm cursor-pointer bg-orange-900"> share </button>
+            </CopyToClipboard>
+            {isCopy ? <div>Copied!</div> : null}
+        </div>
+    );
 }
 
 // how to store: save tries.length and winIndex, reset to 0 if its a new day
@@ -179,20 +174,6 @@ function ShowResult () {
         <div className="inline-block float : left flex space-x-1">
             {fields}
         </div>
-    );
-}
- 
-function Hint (props) {
-
-    return(
-
-        <button 
-        class="rounded-full bg-white hover:bg-gray-400 w-1/3 border text-black mt-6"
-        onClick={alert()}
-        >
-            Hint
-        </button>
-
     );
 }
 
