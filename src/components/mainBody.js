@@ -11,7 +11,7 @@ endMessage.set(0, "Booo! come back tomorrow");
 endMessage.set(1, "Winner winner poop dinner!")
 
     hint = "poop";
-    answer = "poop";
+    answer = "bird";
     todaysPoop = "http://dept.harpercollege.edu/biology/guide/gallery/evidence/scat/original/Bird_Berry_Scat.jpg";
 
 const timeElapsed = Date.now();
@@ -51,7 +51,7 @@ function Input (props) {
         else if(sub === answer) {
             //alert("Right answer");
             setWin(1);
-            localStorage.setItem('scatle_win', '1');
+            localStorage.setItem('scatle_win', '1');    
             winIndex = tries.length;
             localStorage.setItem('scatle_winIndex', winIndex.toString());
             localStorage.setItem('scatle_tries', winIndex.toString());
@@ -71,7 +71,7 @@ function Input (props) {
                 <img src= {todaysPoop} className ='flex rounded-lg mb-10'alt="poop" ></img> {/* replace this with a something that changes the picture everyday*/}
                 <form onSubmit={handleSubmit}>
         
-                <p>Which animal did this?</p>
+                <p>What type animal did this?</p>
                     <input 
                         className="placeholder:italic	text-black placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 shadow-sm focus:outline-none focus:border-sky-500" 
                         placeholder="Type your guess" type="text" name="guess"
