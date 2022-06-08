@@ -5,7 +5,7 @@ const InfoModal = ({ setInfoOff }) => {
     return (
     <div className="fixed z-10 inset-0 overflow-y-auto" onClick={ ()=> { setInfoOff(false)}} >
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
-        <span className="hidden sm:inline-block sm:align-middle sm:h-screen " >
+        <span className="sm:inline-block sm:align-middle sm:h-screen " >
             <div className=" inline-block align-bottom bg-white dark:bg-gray-800 bg-defaultTheme rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 h-fit" >
 
                 <div className="flex items-end justify-center h-min pt-4 px-4 pb-4 text-center sm:block sm:p-0" >
@@ -53,7 +53,7 @@ const HelpModal = ({ setHelpOff }) => {
     return (
         <div className="fixed z-10 inset-0 overflow-y-auto " onClick={ ()=> { setHelpOff(false)}} >
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen " >
+            <span className="sm:inline-block sm:align-middle sm:h-screen " >
                 <div className=" inline-block align-bottom bg-white dark:bg-gray-800 bg-defaultTheme rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 h-fit">
     
                     <div className="flex items-end justify-center h-min pt-4 px-4 pb-4 text-center sm:block sm:p-0" >
@@ -105,7 +105,7 @@ const SettingsModal = ({ setSettingsOff }) => {
     return (
         <div className="fixed z-10 inset-0 overflow-y-auto" onClick={ ()=> { setSettingsOff(false)}} >
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen " >
+            <span className="sm:inline-block sm:align-middle sm:h-screen " >
                 <div className=" inline-block align-bottom bg-white dark:bg-gray-800 bg-defaultTheme rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 h-fit">
     
                     <div className="flex items-end justify-center h-min pt-4 px-4 pb-4 text-center sm:block sm:p-0" >
@@ -154,7 +154,7 @@ const StatsModal = ({ setStatsOff }) => {
     return (
         <div className="fixed z-10 inset-0 overflow-y-auto" onClick={ ()=> { setStatsOff(false)}} >
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen " >
+            <span className="sm:inline-block sm:align-middle sm:h-screen " >
                 <div className=" inline-block align-bottom bg-white dark:bg-gray-800 bg-defaultTheme rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 h-fit">
     
                     <div className="flex items-end justify-center h-min pt-4 px-4 pb-4 text-center sm:block sm:p-0" >
