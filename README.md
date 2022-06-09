@@ -1,6 +1,6 @@
 # Scatle/Poople/Turdle
 
-made with TailwindsCSS, React, Axios, 
+made with TailwindsCSS, React, 
 
 # Demo
 
